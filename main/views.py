@@ -19,6 +19,9 @@ def signup(request):
             UserProfile.objects.create(user=user, role=role)
             login(request, user)
             return redirect('index')
+        else:
+            # Print form errors to debug
+            print(form.errors)
     else:
         form = SignUpForm()
     return render(request, 'main/signup.html', {'form': form})
@@ -36,3 +39,17 @@ def login_view(request):
     return render(request, 'main/login.html', {'form': form})
 
 
+def privacy_policy(request):
+    return render(request, 'main/pp.html')
+
+
+def terms_condition(request):
+    return render(request, 'main/tac.html')
+
+
+def faq(request):
+    return render(request, 'main/faq.html')
+
+
+def about_us(request):
+    return render(request, 'main/about-us.html')
