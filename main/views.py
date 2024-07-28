@@ -1,13 +1,19 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import SignUpForm
-from .models import UserProfile
+from .models import UserProfile, TourGuide
 # Create your views here.
 
 
 def index(request):
-    return render(request, "main/index.html")
+    tour_guides = TourGuide.objects.filter(status='active').order_by('-rating')[:10]
+    return render(request, "main/index.html", {'tourguides': tour_guides})
+
+
+def tour_guide_cv(request, id):
+    tour_guide = get_object_or_404(TourGuide, pk=id)
+    return render(request, 'main/cv.html', {'tourguide': tour_guide})
 
 
 def signup(request):
