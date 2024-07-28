@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import SignUpForm
-from .models import UserProfile, TourGuide
+from .forms import SignUpForm, RatingForm
+from .models import UserProfile, TourGuide, Rating
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 
@@ -11,9 +13,27 @@ def index(request):
     return render(request, "main/index.html", {'tourguides': tour_guides})
 
 
+@login_required
 def tour_guide_cv(request, id):
-    tour_guide = get_object_or_404(TourGuide, pk=id)
-    return render(request, 'main/cv.html', {'tourguide': tour_guide})
+    tourguide = get_object_or_404(TourGuide, pk=id)
+    if request.method == 'POST':
+        form = RatingForm(request.POST)
+        if form.is_valid():
+            rating = form.save(commit=False)
+            rating.tourguide = tourguide
+            rating.user = request.user
+            rating.save()
+            tourguide.update_rating(rating.rating)
+            return redirect('cv', id=tourguide.id)
+    else:
+        form = RatingForm()
+    return render(request, 'main/cv.html', {'tourguide': tourguide, 'form': form})
+
+
+def tour_guide_reviews(request, id):
+    tourguide = get_object_or_404(TourGuide, pk=id)
+    reviews = Rating.objects.filter(tourguide=tourguide)
+    return render(request, 'main/review.html', {'tourguide': tourguide, 'reviews': reviews})
 
 
 def signup(request):
