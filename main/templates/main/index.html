@@ -263,6 +263,11 @@
         .carousel-card:hover {
             transform: scale(1.05);
         }
+        .logo {
+            height: 80px; /* Sesuaikan tinggi logo sesuai kebutuhan */
+            width: auto;  /* Menjaga rasio aspek logo */
+            margin-left: 10px; /* Menambahkan sedikit jarak dari kiri */
+        }
     </style>
     <script>
         function toggleMenu() {
@@ -275,7 +280,10 @@
 <body class="bg-white-100">
     <nav id="navbar"
         class="flex justify-between items-center p-6 fixed w-full z-10 top-0 left-0 bg-transparent text-white navbar">
-        <div class="text-2xl font-bold fade-in">ANKALA JOURNEY</div>
+
+         <div class="fade-in">
+            <img src="{% static 'main/logo.png' %}" alt="ANKALA JOURNEY Logo" class="logo"> <!-- Tambahkan kelas 'logo' -->
+         </div>
         <div class="hidden md:flex space-x-6 text-white fade-in">
             <a href="{% url 'index' %}" class="hover:text-yellow-500 text-yellow-500 duration-300">HOME</a>
             <a href="{% url 'about_us' %}" class="hover:text-yellow-500 transition duration-300">ABOUT</a>
@@ -285,12 +293,8 @@
             {% if not user.is_authenticated %}
             <a href="{% url 'login' %}" class="hover:text-yellow-500 transition duration-300 py-2">LOGIN</a>
             <a href="{% url 'signup' %}"
-                class="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600 transition duration-300">SIGN
-                UP</a>
+                class="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600 transition duration-300">SIGN UP</a>
             {% else %}
-<!--            <a href="{% url 'logout' %}?next={{ request.path }}"-->
-<!--                class="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600 transition duration-300">LOG OUT-->
-<!--            </a>-->
             <form method="post" action="{% url 'logout' %}">
                 {% csrf_token %}
                 <button type="submit" class="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600 transition duration-300">LOG OUT</button>
@@ -315,8 +319,7 @@
             {% if not user.is_authenticated %}
             <a href="{% url 'login' %}" class="hover:text-yellow-500 transition duration-300 text-2xl py-2">LOGIN</a>
             <a href="{% url 'signup' %}"
-                class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 transition duration-300 text-2xl">Sign
-                up</a>
+                class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 transition duration-300 text-2xl">Sign up</a>
             {% else %}
             <a href="{% url 'logout' %}"
                 class="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600 transition duration-300">LOG OUT
