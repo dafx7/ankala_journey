@@ -10,7 +10,17 @@ from django.contrib.auth.decorators import login_required
 
 def index(request):
     tour_guides = TourGuide.objects.filter(status='active').order_by('-rating')[:10]
-    return render(request, "main/index.html", {'tourguides': tour_guides})
+    # Mendapatkan 10 tourguide dengan rating tertinggi yang memiliki gender female
+    female_tourguides = TourGuide.objects.filter(status='active', gender='F').order_by('-rating')[:10]
+
+    # Mendapatkan 10 tourguide dengan rating tertinggi yang memiliki lokasi 'Samosir, North Sumatra'
+    samosir_tourguides = TourGuide.objects.filter(status='active', location='Samosir, North Sumatra').order_by(
+        '-rating')[:10]
+    return render(request, "main/index.html", {
+                'tourguides': tour_guides,
+                'female_tourguides': female_tourguides,
+                'samosir_tourguides': samosir_tourguides
+                })
 
 
 @login_required
@@ -28,6 +38,10 @@ def tour_guide_cv(request, id):
     else:
         form = RatingForm()
     return render(request, 'main/cv.html', {'tourguide': tourguide, 'form': form})
+
+
+def payment(request):
+    return render(request, 'main/payment.html')
 
 
 def tour_guide_reviews(request, id):

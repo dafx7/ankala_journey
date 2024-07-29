@@ -79,20 +79,12 @@
             background-color: #fff;
         }
 
-        .carousel-wrapper {
+        .carousel-wrapper, .carousel-wrapper-2, .carousel-wrapper-3 {
             display: flex;
             gap: 20px;
             /* Add gap between cards */
             transition: transform 0.3s ease-in-out;
         }
-
-        .carousel-wrapper-2 {
-            display: flex;
-            gap: 20px;
-            /* Add gap between cards */
-            transition: transform 0.3s ease-in-out;
-        }
-
         .carousel-navigation {
             display: flex;
             justify-content: space-between;
@@ -287,7 +279,7 @@
         <div class="hidden md:flex space-x-6 text-white fade-in">
             <a href="{% url 'index' %}" class="hover:text-yellow-500 text-yellow-500 duration-300">HOME</a>
             <a href="{% url 'about_us' %}" class="hover:text-yellow-500 transition duration-300">ABOUT</a>
-            <a href="#" class="hover:text-yellow-500 transition duration-300">BLOG</a>
+            <a href="{% url 'article_list' %}" class="hover:text-yellow-500 transition duration-300">ARTICLES</a>
         </div>
         <div class="hidden md:flex space-x-4 items-center fade-in">
             {% if not user.is_authenticated %}
@@ -319,7 +311,7 @@
         <div class="flex flex-col items-center justify-center h-full text-white space-y-6">
             <a href="{% url 'index' %}" class="hover:text-yellow-500 transition duration-300 text-2xl">HOME</a>
             <a href="{% url 'about_us' %}" class="hover:text-yellow-500 transition duration-300 text-2xl">ABOUT</a>
-            <a href="#" class="hover:text-yellow-500 transition duration-300 text-2xl">BLOG</a>
+            <a href="{% url 'article_list' %}" class="hover:text-yellow-500 transition duration-300 text-2xl">ARTICLES</a>
             {% if not user.is_authenticated %}
             <a href="{% url 'login' %}" class="hover:text-yellow-500 transition duration-300 text-2xl py-2">LOGIN</a>
             <a href="{% url 'signup' %}"
@@ -396,7 +388,7 @@
             </div>
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-3xl font-bold">
-                    <span class="text-xl">Top 10</span> <span class="text-3xl">Tourguide on April</span>
+                    <span class="text-4xl text-yellow-500">Top 10</span> <span class="text-3xl">Tourguide on April</span>
                 </h2>
                 <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition duration-300">View
                     all</button>
@@ -421,7 +413,61 @@
                 <button id="prevBtn">Prev</button>
                 <button id="nextBtn">Next</button>
             </div>
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-3xl font-bold">
+                    <span class="text-4xl text-yellow-500">Top 10</span> <span class="text-3xl">Female Tour Guides</span>
+                </h2>
+                <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition duration-300">View
+                    all</button>
+            </div>
+            <div class="divider"></div>
+            <div class="carousel-container">
+                <div class="carousel-wrapper-2">
+                    {% for guide in female_tourguides %}
+                    <div class="carousel-card card">
+                        <img src="https://via.placeholder.com/150" alt="Tourguide {{ guide.name }}">
+                        <div class="rating">{{ guide.rating|floatformat:1 }}</div>
+                        <div class="info">
+                            <h3 class="text-xl font-bold">{{ guide.name }}</h3>
+                            <p class="text-gray-600">{{ guide.location }}</p>
+                            <a href="{% url 'cv' guide.id %}" class="text-yellow-500 mt-2 inline-block">See more</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            <div class="carousel-navigation">
+                <button id="prevBtn1">Prev</button>
+                <button id="nextBtn1">Next</button>
+            </div>
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-3xl font-bold">
+                    <span class="text-4xl text-yellow-500">Top 10</span> <span class="text-3xl">Tour Guides in Samosir, North Sumatra</span>
+                </h2>
+                <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition duration-300">View
+                    all</button>
+            </div>
+            <div class="divider"></div>
+            <div class="carousel-container">
+                <div class="carousel-wrapper-3">
+                    {% for guide in samosir_tourguides %}
+                    <div class="carousel-card card">
+                        <img src="https://via.placeholder.com/150" alt="guide {{ guide.name }}">
+                        <div class="rating">{{ guide.rating|floatformat:1 }}</div>
+                        <div class="info">
+                            <h3 class="text-xl font-bold">{{ guide.name }}</h3>
+                            <p class="text-gray-600">{{ guide.location }}</p>
+                            <a href="{% url 'cv' guide.id %}" class="text-yellow-500 mt-2 inline-block">See more</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="carousel-navigation">
+                <button id="prevBtn2">Prev</button>
+                <button id="nextBtn2">Next</button>
+            </div>
         </div>
+
     </section>
 
     <section class="bg-white pb-16">
@@ -589,7 +635,7 @@
                     <h3 class="text-yellow-500 text-xl font-bold">Information</h3>
                     <ul class="text-white mt-4 space-y-2">
                         <li><a href="{% url 'about_us' %}" class="hover:underline">About</a></li>
-                        <li><a href="#" class="hover:underline">Artikel</a></li>
+                        <li><a href="{% url 'article_list' %}" class="hover:underline">Articles</a></li>
                         <li><a href="#" class="hover:underline">Testimonial</a></li>
                         <li><a href="{% url 'faq' %}" class="hover:underline">F.A.Q</a></li>
                     </ul>
@@ -668,6 +714,26 @@
             if (currentIndex2 < carouselWrapper2.children.length - 1) {
                 currentIndex2++;
                 carouselWrapper2.style.transform = `translateX(-${currentIndex2 * 220}px)`;
+            }
+        });
+    </script>
+    <script>
+        const carouselWrapper3 = document.querySelector('.carousel-wrapper-3');
+        const prevBtn3 = document.getElementById('prevBtn2');
+        const nextBtn3 = document.getElementById('nextBtn2');
+        let currentIndex3 = 0;
+
+        prevBtn2.addEventListener('click', () => {
+            if (currentIndex3 > 0) {
+                currentIndex3--;
+                carouselWrapper3.style.transform = `translateX(-${currentIndex3 * 220}px)`;
+            }
+        });
+
+        nextBtn3.addEventListener('click', () => {
+            if (currentIndex3 < carouselWrapper3.children.length - 1) {
+                currentIndex3++;
+                carouselWrapper3.style.transform = `translateX(-${currentIndex3 * 220}px)`;
             }
         });
     </script>

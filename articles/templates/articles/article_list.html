@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promo Harga Fantastis</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    {% load static %}
+    <style>
+        .bg-custom-black {
+            background-color: #000000;
+        }
+
+        .bg-custom-blue {
+            background-color: #00012A;
+        }
+
+        .bg-custom-yellow {
+            background-color: #F4C430;
+        }
+
+        .text-custom-white {
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <!-- Promo Section -->
+    <section class="w-full h-64 bg-gray-300 flex items-center justify-center">
+        <h1 class="text-4xl font-bold text-custom-black">PROMO HARGA FANTASTIS</h1>
+    </section>
+
+    <!-- Navigation Section -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="container mx-auto flex justify-center space-x-4">
+            <button id="btn-destination" class="px-4 py-2 bg-custom-blue text-custom-white rounded-full">Destination</button>
+            <button id="btn-hotel" class="px-4 py-2 bg-custom-black text-custom-white border rounded-full">Hotel</button>
+            <button id="btn-event" class="px-4 py-2 bg-custom-black text-custom-white border rounded-full">Event</button>
+            <button id="btn-activity" class="px-4 py-2 bg-custom-black text-custom-white border rounded-full">Activity</button>
+            <button id="btn-search" class="px-4 py-2 bg-custom-black text-custom-white border rounded-full">Search...</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-6" id="section-title">Danau Toba</h2>
+        <div id="cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Destination Cards -->
+            <div class="card-destination bg-white shadow-lg rounded-lg overflow-hidden">
+                <img class="w-full h-48 object-cover" src="{% static 'main/image10.png' %}" alt="Bukit Tarabunga">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold">Bukit Tarabunga</h3>
+                    <p class="text-gray-600 mt-2">Lorem ipsum dolor sit amet consectetur. Scelerisque feugiat faucibus
+                        aliquam pulvinar consectetur fermentum.</p>
+                    <a href="{% url 'article' %}" class="text-custom-blue mt-4 inline-block">More ></a>
+                </div>
+            </div>
+            <div class="card-destination bg-white shadow-lg rounded-lg overflow-hidden">
+                <img class="w-full h-48 object-cover" src="{% static 'main/image10.png' %}" alt="Bukit Tarabunga">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold">Bukit Tarabunga</h3>
+                    <p class="text-gray-600 mt-2">Lorem ipsum dolor sit amet consectetur. Scelerisque feugiat faucibus
+                        aliquam pulvinar consectetur fermentum.</p>
+                    <a href="{% url 'article' %}" class="text-custom-blue mt-4 inline-block">More ></a>
+                </div>
+            </div>
+            <div class="card-destination bg-white shadow-lg rounded-lg overflow-hidden">
+                <img class="w-full h-48 object-cover" src="{% static 'main/image10.png' %}" alt="Bukit Tarabunga">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold">Bukit Tarabunga</h3>
+                    <p class="text-gray-600 mt-2">Lorem ipsum dolor sit amet consectetur. Scelerisque feugiat faucibus
+                        aliquam pulvinar consectetur fermentum.</p>
+                    <a href="{% url 'article' %}" class="text-custom-blue mt-4 inline-block">More ></a>
+                </div>
+            </div>
+            <div class="card-destination bg-white shadow-lg rounded-lg overflow-hidden">
+                <img class="w-full h-48 object-cover" src="{% static 'main/image10.png' %}" alt="Bukit Tarabunga">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold">Bukit Tarabunga</h3>
+                    <p class="text-gray-600 mt-2">Lorem ipsum dolor sit amet consectetur. Scelerisque feugiat faucibus
+                        aliquam pulvinar consectetur fermentum.</p>
+                    <a href="{% url 'article' %}" class="text-custom-blue mt-4 inline-block">More ></a>
+                </div>
+            </div>
+            <!-- Add more destination cards as needed -->
+
+            <!-- Hotel Cards (Initially Hidden) -->
+            <div class="card-hotel bg-white shadow-lg rounded-lg overflow-hidden hidden">
+                <img class="w-full h-48 object-cover" src="{% static 'main/hotel1.png' %}" alt="Hotel Example">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold">Hotel Example</h3>
+                    <p class="text-gray-600 mt-2">Lorem ipsum dolor sit amet consectetur. Scelerisque feugiat faucibus
+                        aliquam pulvinar consectetur fermentum.</p>
+                    <a href="#" class="text-custom-blue mt-4 inline-block">More ></a>
+                </div>
+            </div>
+            <div class="card-hotel bg-white shadow-lg rounded-lg overflow-hidden hidden">
+                <img class="w-full h-48 object-cover" src="{% static 'main/hotel1.png' %}" alt="Hotel Example">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold">Hotel Example</h3>
+                    <p class="text-gray-600 mt-2">Lorem ipsum dolor sit amet consectetur. Scelerisque feugiat faucibus
+                        aliquam pulvinar consectetur fermentum.</p>
+                    <a href="#" class="text-custom-blue mt-4 inline-block">More ></a>
+                </div>
+            </div>
+            <div class="card-hotel bg-white shadow-lg rounded-lg overflow-hidden hidden">
+                <img class="w-full h-48 object-cover" src="{% static 'main/hotel1.png' %}" alt="Hotel Example">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold">Hotel Example</h3>
+                    <p class="text-gray-600 mt-2">Lorem ipsum dolor sit amet consectetur. Scelerisque feugiat faucibus
+                        aliquam pulvinar consectetur fermentum.</p>
+                    <a href="#" class="text-custom-blue mt-4 inline-block">More ></a>
+                </div>
+            </div>
+            <div class="card-hotel bg-white shadow-lg rounded-lg overflow-hidden hidden">
+                <img class="w-full h-48 object-cover" src="{% static 'main/hotel1.png' %}" alt="Hotel Example">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold">Hotel Example</h3>
+                    <p class="text-gray-600 mt-2">Lorem ipsum dolor sit amet consectetur. Scelerisque feugiat faucibus
+                        aliquam pulvinar consectetur fermentum.</p>
+                    <a href="#" class="text-custom-blue mt-4 inline-block">More ></a>
+                </div>
+            </div>
+            <!-- Add more hotel cards as needed -->
+
+            <!-- Event Cards (Initially Hidden) -->
+            <div class="card-event bg-white shadow-lg rounded-lg overflow-hidden hidden">
+                <img class="w-full h-48 object-cover" src="{% static 'main/event1.png' %}" alt="Event Example">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold">Event Example</h3>
+                    <p class="text-gray-600 mt-2">Lorem ipsum dolor sit amet consectetur. Scelerisque feugiat faucibus
+                        aliquam pulvinar consectetur fermentum.</p>
+                    <a href="#" class="text-custom-blue mt-4 inline-block">More ></a>
+                </div>
+            </div>
+            <div class="card-event bg-white shadow-lg rounded-lg overflow-hidden hidden">
+                <img class="w-full h-48 object-cover" src="{% static 'main/event1.png' %}" alt="Event Example">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold">Event Example</h3>
+                    <p class="text-gray-600 mt-2">Lorem ipsum dolor sit amet consectetur. Scelerisque feugiat faucibus
+                        aliquam pulvinar consectetur fermentum.</p>
+                    <a href="#" class="text-custom-blue mt-4 inline-block">More ></a>
+                </div>
+            </div>
+            <div class="card-event bg-white shadow-lg rounded-lg overflow-hidden hidden">
+                <img class="w-full h-48 object-cover" src="{% static 'main/event1.png' %}" alt="Event Example">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold">Event Example</h3>
+                    <p class="text-gray-600 mt-2">Lorem ipsum dolor sit amet consectetur. Scelerisque feugiat faucibus
+                        aliquam pulvinar consectetur fermentum.</p>
+                    <a href="#" class="text-custom-blue mt-4 inline-block">More ></a>
+                </div>
+            </div>
+            <div class="card-event bg-white shadow-lg rounded-lg overflow-hidden hidden">
+                <img class="w-full h-48 object-cover" src="{% static 'main/event1.png' %}" alt="Event Example">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold">Event Example</h3>
+                    <p class="text-gray-600 mt-2">Lorem ipsum dolor sit amet consectetur. Scelerisque feugiat faucibus
+                        aliquam pulvinar consectetur fermentum.</p>
+                    <a href="#" class="text-custom-blue mt-4 inline-block">More ></a>
+                </div>
+            </div>
+            <!-- Add more event cards as needed -->
+
+            <!-- Activity Cards (Initially Hidden) -->
+            <div class="card-activity bg-white shadow-lg rounded-lg overflow-hidden hidden">
+                <img class="w-full h-48 object-cover" src="{% static 'main/activity1.png' %}" alt="Activity Example">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold">Activity Example</h3>
+                    <p class="text-gray-600 mt-2">Lorem ipsum dolor sit amet consectetur. Scelerisque feugiat faucibus
+                        aliquam pulvinar consectetur fermentum.</p>
+                    <a href="#" class="text-custom-blue mt-4 inline-block">More ></a>
+                </div>
+            </div>
+            <div class="card-activity bg-white shadow-lg rounded-lg overflow-hidden hidden">
+                <img class="w-full h-48 object-cover" src="{% static 'main/activity1.png' %}" alt="Activity Example">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold">Activity Example</h3>
+                    <p class="text-gray-600 mt-2">Lorem ipsum dolor sit amet consectetur. Scelerisque feugiat faucibus
+                        aliquam pulvinar consectetur fermentum.</p>
+                    <a href="#" class="text-custom-blue mt-4 inline-block">More ></a>
+                </div>
+            </div>
+            <div class="card-activity bg-white shadow-lg rounded-lg overflow-hidden hidden">
+                <img class="w-full h-48 object-cover" src="{% static 'main/activity1.png' %}" alt="Activity Example">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold">Activity Example</h3>
+                    <p class="text-gray-600 mt-2">Lorem ipsum dolor sit amet consectetur. Scelerisque feugiat faucibus
+                        aliquam pulvinar consectetur fermentum.</p>
+                    <a href="#" class="text-custom-blue mt-4 inline-block">More ></a>
+                </div>
+            </div>
+            <div class="card-activity bg-white shadow-lg rounded-lg overflow-hidden hidden">
+                <img class="w-full h-48 object-cover" src="{% static 'main/activity1.png' %}" alt="Activity Example">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold">Activity Example</h3>
+                    <p class="text-gray-600 mt-2">Lorem ipsum dolor sit amet consectetur. Scelerisque feugiat faucibus
+                        aliquam pulvinar consectetur fermentum.</p>
+                    <a href="#" class="text-custom-blue mt-4 inline-block">More ></a>
+                </div>
+            </div>
+            <!-- Add more activity cards as needed -->
+        </div>
+    </main>
+
+    <script>
+        const buttons = document.querySelectorAll("nav button");
+        const cardsContainer = document.getElementById("cards-container");
+        const sectionTitle = document.getElementById("section-title");
+
+        buttons.forEach(button => {
+            button.addEventListener("click", () => {
+                const category = button.id.split("-")[1];
+                updateCards(category);
+            });
+        });
+
+        function updateCards(category) {
+            const allCards = cardsContainer.querySelectorAll("div[class*='card-']");
+            allCards.forEach(card => card.classList.add("hidden"));
+
+            const selectedCards = cardsContainer.querySelectorAll(`.card-${category}`);
+            selectedCards.forEach(card => card.classList.remove("hidden"));
+
+            const titles = {
+                destination: "Danau Toba",
+                hotel: "Hotels",
+                event: "Events",
+                activity: "Activities",
+                search: "Search Results"
+            };
+            sectionTitle.textContent = titles[category];
+        }
+    </script>
+</body>
+
+</html>
